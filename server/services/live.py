@@ -1,4 +1,3 @@
-# from nba_api.stats.endpoints import playercareerstats
 from nba_api.live.nba.endpoints import scoreboard
 import json
 
