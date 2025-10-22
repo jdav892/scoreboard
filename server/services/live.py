@@ -2,7 +2,15 @@ from nba_api.live.nba.endpoints import scoreboard
 import json
 
 
-def main():
+def live_teams():
+    """
+    This will be a similar implementation to below of teams currently playing to be displayed in a card format
+    with their associated players and their stats to be rotated in and out with each other as games progress
+    throughout the day.
+    """
+
+
+def live_leaders():
     # career = playercareerstats.PlayerCareerStats(player_id="203999")
     # data = career.get_json()
 
@@ -30,4 +38,4 @@ def main():
     print(away_game_leader_name)
 
 
-main()
+live_leaders()
