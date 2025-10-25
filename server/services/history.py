@@ -7,6 +7,7 @@ class History:
         pass
 
     def career_stats(self) -> None:
+        # probably want to use pandas for this
         player = playercareerstats.PlayerCareerStats(player_id="203999")
 
         player_career = player.get_json()

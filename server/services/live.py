@@ -1,5 +1,5 @@
-from nba_api.live.nba.endpoints import scoreboard
 import json
+from nba_api.live.nba.endpoints import scoreboard
 
 
 class Live:
@@ -14,9 +14,6 @@ class Live:
         """
 
     def live_leaders(self) -> None:
-        # career = playercareerstats.PlayerCareerStats(player_id="203999")
-        # data = career.get_json()
-
         games = scoreboard.ScoreBoard()
 
         score = games.get_json()
@@ -24,35 +21,18 @@ class Live:
 
         # a base variable to step through json
         base = scores["scoreboard"]["games"]
-        first = base[0]
-        second = base[1]
-        third = base[2]
-        print(first)
-        print(second)
-        print(third)
 
-        # loops through the base value to print scoreboard
+        # loops through the base value to extract specifics
         for i in range(len(base)):
-            print(base[i]["gameLeaders"]["homeLeaders"]["name"])
-            print(base[i]["gameLeaders"]["awayLeaders"]["name"])
-
-        # home and away leader names
-        # first_home_game_leader_name = first["gameLeaders"]["homeLeaders"]["name"]
-        # first_away_game_leader_name = first["gameLeaders"]["awayLeaders"]["name"]
-        #
-        # second_home_game_leader_name = second["gameLeaders"]["homeLeaders"]["name"]
-        # second_away_game_leader_name = second["gameLeaders"]["awayLeaders"]["name"]
-        #
-        # third_home_game_leader_name = third["gameLeaders"]["homeLeaders"]["name"]
-        # third_away_game_leader_name = third["gameLeaders"]["awayLeaders"]["name"]
-        #
-        # print(first_home_game_leader_name)
-        # print(first_away_game_leader_name)
-        # print(second_home_game_leader_name)
-        # print(second_away_game_leader_name)
-        # print(third_home_game_leader_name)
-        # print(third_away_game_leader_name)
-        #
+            # need to account for accented characters for names
+            print(f"Player: {base[i]['gameLeaders']['homeLeaders']['name']}")
+            print(f"Points: {base[i]['gameLeaders']['homeLeaders']['points']}")
+            print(f"Rebounds: {base[i]['gameLeaders']['homeLeaders']['rebounds']}")
+            print(f"Assists: {base[i]['gameLeaders']['homeLeaders']['assists']}")
+            print(f"Player: {base[i]['gameLeaders']['awayLeaders']['name']}")
+            print(f"Points: {base[i]['gameLeaders']['awayLeaders']['points']}")
+            print(f"Rebounds: {base[i]['gameLeaders']['awayLeaders']['rebounds']}")
+            print(f"Assists: {base[i]['gameLeaders']['awayLeaders']['assists']}")
 
 
 live_runner = Live()
