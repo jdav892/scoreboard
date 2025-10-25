@@ -12,6 +12,17 @@ class Live:
         with their associated players and their stats to be rotated in and out with each other as games progress
         throughout the day.
         """
+        games = scoreboard.ScoreBoard()
+        score = games.get_json()
+        scores = json.loads(score)
+        base = scores["scoreboard"]["games"]
+        for i in range(len(base)):
+            print(
+                f"{base[i]['homeTeam']['teamCity']} {base[i]['homeTeam']['teamName']}"
+            )
+            print(
+                f"{base[i]['awayTeam']['teamCity']} {base[i]['awayTeam']['teamName']}"
+            )
 
     def live_leaders(self) -> None:
         games = scoreboard.ScoreBoard()
@@ -36,4 +47,5 @@ class Live:
 
 
 live_runner = Live()
+live_runner.live_teams()
 live_runner.live_leaders()

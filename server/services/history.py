@@ -6,7 +6,10 @@ class History:
     def __init__(self) -> None:
         pass
 
-    def career_stats(self) -> None:
+    def player_info(self) -> None:
+        pass
+
+    def player_stats(self) -> None:
         # probably want to use pandas for this
         player = playercareerstats.PlayerCareerStats(player_id="203999")
 
@@ -19,4 +22,4 @@ class History:
 
 player_history = History()
 
-player_history.career_stats()
+player_history.player_stats()
