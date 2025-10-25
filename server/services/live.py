@@ -33,24 +33,26 @@ class Live:
 
         # loops through the base value to print scoreboard
         for i in range(len(base)):
-            print(base[i])
+            print(base[i]["gameLeaders"]["homeLeaders"]["name"])
+            print(base[i]["gameLeaders"]["awayLeaders"]["name"])
 
         # home and away leader names
-        first_home_game_leader_name = first["gameLeaders"]["homeLeaders"]["name"]
-        first_away_game_leader_name = first["gameLeaders"]["awayLeaders"]["name"]
-
-        second_home_game_leader_name = second["gameLeaders"]["homeLeaders"]["name"]
-        second_away_game_leader_name = second["gameLeaders"]["awayLeaders"]["name"]
-
-        third_home_game_leader_name = third["gameLeaders"]["homeLeaders"]["name"]
-        third_away_game_leader_name = third["gameLeaders"]["awayLeaders"]["name"]
-
-        print(first_home_game_leader_name)
-        print(first_away_game_leader_name)
-        print(second_home_game_leader_name)
-        print(second_away_game_leader_name)
-        print(third_home_game_leader_name)
-        print(third_away_game_leader_name)
+        # first_home_game_leader_name = first["gameLeaders"]["homeLeaders"]["name"]
+        # first_away_game_leader_name = first["gameLeaders"]["awayLeaders"]["name"]
+        #
+        # second_home_game_leader_name = second["gameLeaders"]["homeLeaders"]["name"]
+        # second_away_game_leader_name = second["gameLeaders"]["awayLeaders"]["name"]
+        #
+        # third_home_game_leader_name = third["gameLeaders"]["homeLeaders"]["name"]
+        # third_away_game_leader_name = third["gameLeaders"]["awayLeaders"]["name"]
+        #
+        # print(first_home_game_leader_name)
+        # print(first_away_game_leader_name)
+        # print(second_home_game_leader_name)
+        # print(second_away_game_leader_name)
+        # print(third_home_game_leader_name)
+        # print(third_away_game_leader_name)
+        #
 
 
 live_runner = Live()
