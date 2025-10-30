@@ -1,30 +1,29 @@
 import json
 from nba_api.live.nba.endpoints import scoreboard
 
+"""
+This should be handled by the frontend dynamically realistically and is more so practice for how to do this in python
+"""
+
 
 class Live:
-    def __init__(self) -> None:
+    def __init__(self):
         pass
 
-    def live_teams(self) -> None:
-        """
-        This will be a similar implementation to below of teams currently playing to be displayed in a card format
-        with their associated players and their stats to be rotated in and out with each other as games progress
-        throughout the day.
-        """
+    def live_teams(self):
         games = scoreboard.ScoreBoard()
         score = games.get_json()
         scores = json.loads(score)
         base = scores["scoreboard"]["games"]
         for i in range(len(base)):
-            print(
-                f"{base[i]['homeTeam']['teamCity']} {base[i]['homeTeam']['teamName']}"
-            )
-            print(
-                f"{base[i]['awayTeam']['teamCity']} {base[i]['awayTeam']['teamName']}"
-            )
+            return [
+                {base[i]["homeTeam"]["teamCity"]},
+                {base[i]["homeTeam"]["teamName"]},
+                {base[i]["awayTeam"]["teamCity"]},
+                {base[i]["awayTeam"]["teamName"]},
+            ]
 
-    def live_leaders(self) -> None:
+    def live_leaders(self):
         games = scoreboard.ScoreBoard()
 
         score = games.get_json()
@@ -44,8 +43,3 @@ class Live:
             print(f"Points: {base[i]['gameLeaders']['awayLeaders']['points']}")
             print(f"Rebounds: {base[i]['gameLeaders']['awayLeaders']['rebounds']}")
             print(f"Assists: {base[i]['gameLeaders']['awayLeaders']['assists']}")
-
-
-live_runner = Live()
-live_runner.live_teams()
-live_runner.live_leaders()
