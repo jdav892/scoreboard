@@ -1,5 +1,6 @@
 from fastapi import APIRouter, WebSocket
 from nba_api.live.nba.endpoints import scoreboard
+from starlette.websockets import WebSocketState
 import asyncio
 
 router = APIRouter()
@@ -7,6 +8,7 @@ router = APIRouter()
 
 @router.websocket("/sb/live-scores")
 async def live_scores_socket(websocket: WebSocket):
+    # using a polling approach to update every 3 seconds
     await websocket.accept()
     try:
         while True:
@@ -15,8 +17,9 @@ async def live_scores_socket(websocket: WebSocket):
 
             await websocket.send_json(games)
 
-            await asyncio.sleep(10)
+            await asyncio.sleep(3)
     except Exception as e:
         print(f"WebSocket error: {e}")
     finally:
-        await websocket.close()
+        if websocket.client_state != WebSocketState.DISCONNECTED:
+            await websocket.close()
