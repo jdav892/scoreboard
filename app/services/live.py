@@ -2,7 +2,8 @@ import json
 from nba_api.live.nba.endpoints import scoreboard
 
 """
-This should be handled by the frontend dynamically realistically and is more so practice for how to do this in python
+This is a test and should be handled by the frontend dynamically
+realistically and is proof of concept for what I'm looking for
 """
 
 
