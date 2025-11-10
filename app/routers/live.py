@@ -19,7 +19,26 @@ async def live_scores_socket(websocket: WebSocket):
 
             await asyncio.sleep(3)
     except Exception as e:
-        print(f"WebSocket error: {e}")
+        print(f"ws error: {e}")
+    finally:
+        if websocket.client_state != WebSocketState.DISCONNECTED:
+            await websocket.close()
+
+
+@router.websocket("/sb/live-leaders")
+async def live_leaders_socket(websocket: WebSocket):
+    await websocket.accept()
+    try:
+        while True:
+            scores = scoreboard.ScoreBoard()
+            # Need to reread the json for this
+            games = scores.games.get_dict()
+
+            await websocket.send_json(games)
+
+            await asyncio.sleep(5)
+    except Exception as e:
+        print(f"ws error: {e}")
     finally:
         if websocket.client_state != WebSocketState.DISCONNECTED:
             await websocket.close()
